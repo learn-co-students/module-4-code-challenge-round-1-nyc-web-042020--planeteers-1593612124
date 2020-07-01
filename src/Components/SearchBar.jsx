@@ -1,15 +1,13 @@
 import React from 'react';
 
-class SearchBar extends React.Component {
+function SearchBar(props) {
 
-  render() {
-    return (
-      <div className="search">
-        <input type="checkbox" checked={this.props.sort ? true : false} onChange={this.props.handleSort}/>
-        <input type="text" value={this.props.searchTerm} placeholder="search" onChange={this.props.handleSearch} />
-      </div>
-    );
-  }
+  return (
+    <div className="search">
+      <input type="checkbox" checked={props.sort ? true : false} onChange={props.handleSort}/>
+      <input type="text" value={props.searchTerm} placeholder="search" onChange={props.handleSearch} />
+    </div>
+  )
 
 }
 
