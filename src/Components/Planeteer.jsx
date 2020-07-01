@@ -1,8 +1,5 @@
 import React from 'react';
 
-let currentYear = new Date()
-console.log(currentYear.getFullYear())
-
 class Planeteer extends React.Component {
 
   state={
