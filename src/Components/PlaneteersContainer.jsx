@@ -1,16 +1,19 @@
 import React from 'react';
 import Planeteer from './Planeteer'
 
-const PlaneteersContainer = () => {
+const PlaneteersContainer = (props) => {
+  let arrayOfComps = props.planeteers.map(planeteerPojo => {
+    return <Planeteer key={planeteerPojo.id} planeteer={planeteerPojo}/>
+  })
 
   return (
     <ul className="cards">
       {
-        "Render Planeteers here"
+        arrayOfComps
       }
     </ul>
   )
+}
 
-};
 
 export default PlaneteersContainer;
