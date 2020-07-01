@@ -6,12 +6,16 @@ class Planeteer extends React.Component {
     clicked: false
   }
 
+  handleClick = () => {
+    this.setState((prevState) => {return {clicked: !prevState.clicked}})
+  }
+
   render() {
 
     const { id, name, fromUSA, born, bio, quote, pictureUrl, twitter } = this.props.planeteer
 
     return (
-      <li className="cards__item">
+      <li className="cards__item" onClick={this.handleClick}>
         <div className="card">
           <img src={pictureUrl} alt={name} className="card__image" />
           <div className="card__content">
