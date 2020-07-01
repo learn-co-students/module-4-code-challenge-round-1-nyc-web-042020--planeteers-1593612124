@@ -42,6 +42,14 @@ class App extends React.Component {
     return newArray
   }
 
+  addNewPlaneteer = (newPlaneteer) => {
+    let newArray = [...this.state.planeteers, newPlaneteer]
+
+    this.setState({
+      planeteers: newArray
+    })
+  }
+
   render(){
     console.log(this.state.search)
     return (
@@ -51,7 +59,9 @@ class App extends React.Component {
         search={this.state.search}
         changeSearch={this.changeSearch}
         />
-        <RandomButton/>
+        <RandomButton
+        addNewPlaneteer={this.addNewPlaneteer}
+        />
         <PlaneteersContainer 
         planeteers={this.planeteerToDisplay()}
         />
