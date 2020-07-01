@@ -33,18 +33,26 @@ class App extends React.Component {
   addNewPlaneteer = (newPlaneteer) => {
 
     if (newPlaneteer) {
-    const configObj = {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(newPlaneteer)
-    }
+      const arrayOfDuplicates = this.state.planeteers.filter(planeteer => planeteer.name === newPlaneteer.name)
+      
+      if (arrayOfDuplicates.length > 0) {
+        window.alert("Try again!")
+      }
 
-    fetch(`http://localhost:4000/planeteers`, configObj)
-      .then(resp => resp.json())
-      .then(json => this.setState((prevState) => { return { planeteers: [...prevState.planeteers, json] } }))
-    }
+      else {
+        const configObj = {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify(newPlaneteer)
+        }
+    
+        fetch(`http://localhost:4000/planeteers`, configObj)
+          .then(resp => resp.json())
+          .then(json => this.setState((prevState) => { return { planeteers: [...prevState.planeteers, json] } }))
+        }
+      }
   }
 
   handleSearch = (e) => {

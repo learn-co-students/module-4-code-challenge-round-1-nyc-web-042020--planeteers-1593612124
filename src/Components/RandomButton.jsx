@@ -42,7 +42,7 @@ const arrayOfPlaneteers = [
 class RandomButton extends React.Component {
 
   state = {
-    hasRandomPlaneteers: false
+    hasRandomPlaneteers: true
   }
 
   handleClick = () => {
@@ -67,7 +67,7 @@ class RandomButton extends React.Component {
   render() {
     return (
       <div className="centered">
-        <button onClick={this.handleClick} id="random-planeteer" >
+        <button onClick={this.handleClick} id="random-planeteer" disabled={this.state.hasRandomPlaneteers ? false : true}>
           {this.state.hasRandomPlaneteers ? "Click to Add a Random Planeteer" : "Awaiting More Recruits"}
         </button>
       </div>
