@@ -30,10 +30,10 @@ class Planeteer extends React.Component {
           <img src={pictureUrl} alt={name} className="card__image" onClick={this.handleClick} />
           <div className="card__content">
             <div className="card__title">{name}</div>
-            {/* added age here  */}
-            <p>{this.calculateAge()}</p>
             <p className="card__text">{this.state.clicked ? quote : bio}</p>
             <div className="card__detail">
+              {/* added age here  */}
+              <p>age: {this.calculateAge()}</p>
               <p>{twitter}</p>
               <p>{fromUSA ? "USA-based" : "Working overseas"}</p>
             </div>
