@@ -10,7 +10,7 @@ class App extends React.Component {
   state={
     planeteersList: [],
     searchTerm: "",
-    checked: false
+    // checked: false
   }
 
   componentDidMount(){
@@ -28,6 +28,14 @@ class App extends React.Component {
       searchTerm: termfromChild
     })
   }
+
+  // updateCheckedState = (checkFromChild) => {
+  //   this.setState((prevState) => {
+  //     return {
+  //       checked: !prevState.checked
+  //     }
+  //   })
+  // }
 
   addNewPlaneteer = (newPlaneteerInstance) => {
     let arrayToDisplay = [...this.state.planeteersList, newPlaneteerInstance]
@@ -47,7 +55,13 @@ class App extends React.Component {
           planeteerPOJO.bio.toLowerCase().includes(this.state.searchTerm.toLowerCase())
         )
       })
-    }
+    } 
+    // if (this.state.checked === true){
+    //   arrayToDisplay = this.state.planeteersList.sort((planeteerA, planeteerB) => {
+    //     return planeteerA.age - planeteerB.age
+    //   })
+    // }
+
     return arrayToDisplay
   }
 
@@ -58,6 +72,8 @@ class App extends React.Component {
         <SearchBar 
           searchTerm={this.state.searchTerm}
           updateSearchTerm={this.updateSearchTerm}
+          checked={this.state.checked}
+          updateCheckedState={this.updateCheckedState}
         />
         <RandomButton
           addNewPlaneteer={this.addNewPlaneteer}
