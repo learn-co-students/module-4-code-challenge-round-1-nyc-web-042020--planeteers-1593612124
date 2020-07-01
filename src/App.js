@@ -17,27 +17,32 @@ class App extends React.Component {
         fetch('http://localhost:4000/planeteers')
             .then((r) => r.json())
             .then((planeteers) => {
-            this.setState({
-                planeteersArray: planeteers,
+                this.setState({
+                    planeteersArray: planeteers,
+                });
             });
-        });
     }
 
+    returnsPlaneteersArray = () => {
+        let planeteers = this.state.planeteersArray;
+        return planeteers;
+    };
 
 
 
-
-render(){
-    let planeteersArray = this.
-    return (
-        <div>
-            <Header />
-            <SearchBar />
-            <RandomButton />
-            <PlaneteersContainer />
-        </div>
-    );
-}
+    render() {
+        let planeteersArray = this.returnsPlaneteersArray();
+        return (
+            <div>
+                <Header />
+                <SearchBar />
+                <RandomButton />
+                <PlaneteersContainer
+                    planeteersArray={planeteersArray}
+                />
+            </div>
+        );
+    }
 
 }
 

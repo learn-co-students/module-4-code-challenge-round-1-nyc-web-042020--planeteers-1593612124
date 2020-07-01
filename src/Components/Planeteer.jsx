@@ -1,24 +1,43 @@
 import React from 'react';
 
 class Planeteer extends React.Component {
+    state = {
+        bio: true,
+    };
 
-  render() {
-    return (
-      <li className="cards__item">
-        <div className="card">
-          <img src={"RENDER IMAGE"} alt={"RENDER PERSON NAME"} className="card__image" />
-          <div className="card__content">
-            <div className="card__title">{"RENDER NAME"}</div>
-            <p className="card__text">{"CONDITIONALLY RENDER BIO OR QUOTE"}</p>
-            <div className="card__detail">
-              <p>{"RENDER TWITTER HANDLE"}</p>
-              <p>{"CONDITIONALLY RENDER WHETHER THE PERSON IS USA-BASED OR WORKING OVERSEAS"}</p>
-            </div>
-          </div>
-        </div>
-      </li>
-    );
-  }
+    handleClick = (e) => {
+        this.setState({
+            bio: !this.state.bio,
+        });
+    };
+
+    render() {
+        return (
+            <li className="cards__item">
+                <div className="card">
+                    <img src={this.props.planeteer.pictureUrl} alt={this.props.planeteer.name} className="card__image" />
+                    <div className="card__content">
+                        <div className="card__title">{this.props.planeteer.name}</div>
+                        onClick={this.handleClick}
+                        <p className="card__text">
+                        {this.state.bio
+                            ? this.props.planeteer.bio
+                            : this.props.planeteer.quote
+                        }
+                        </p>
+                        <div className="card__detail">
+                            <p>{this.props.planeteer.twitter}</p>
+                            <p>{this.props.planeteer.fromUSA
+                                ? "USA-based"
+                                : "Working overseas"
+                            }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        );
+    }
 
 }
 
