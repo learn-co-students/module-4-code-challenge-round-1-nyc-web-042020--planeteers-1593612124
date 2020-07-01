@@ -157,7 +157,7 @@ img {
 
 .card__detail {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .card__detail p {
