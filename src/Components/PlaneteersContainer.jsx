@@ -19,9 +19,12 @@ const PlaneteersContainer = (props) => {
             {planeteersCards}
         </ul>
     );
-}
+};
+
+// render() {
+//     const search = this.state.filter(planeteers => planeteers.name.includes(this.state.search))
+// }
 
 
 
-
-    export default PlaneteersContainer;
+export default PlaneteersContainer;
