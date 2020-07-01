@@ -7,17 +7,37 @@ import PlaneteersContainer from './Components/PlaneteersContainer'
 import SearchBar from './Components/SearchBar'
 
 class App extends React.Component {
+    state = {
+        planeteersArray: [],
+    };
 
-  render(){
+
+
+    componentDidMount() {
+        fetch('http://localhost:4000/planeteers')
+            .then((r) => r.json())
+            .then((planeteers) => {
+            this.setState({
+                planeteersArray: planeteers,
+            });
+        });
+    }
+
+
+
+
+
+render(){
+    let planeteersArray = this.
     return (
-      <div>
-        <Header />
-        <SearchBar />
-        <RandomButton/>
-        <PlaneteersContainer />
-      </div>
+        <div>
+            <Header />
+            <SearchBar />
+            <RandomButton />
+            <PlaneteersContainer />
+        </div>
     );
-  }
+}
 
 }
 
