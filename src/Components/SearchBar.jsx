@@ -3,7 +3,7 @@ import React from 'react';
 class SearchBar extends React.Component {
 
   handleChange = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     this.props.handleInput(e.target.value)
   }
 

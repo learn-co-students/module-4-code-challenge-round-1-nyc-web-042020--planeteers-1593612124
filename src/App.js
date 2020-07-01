@@ -28,15 +28,26 @@ class App extends React.Component {
     })
   }
 
+  handleSearch = (e) => {
+    let searches = this.state.planeteers.filter(planet => {
+      if ( planet.name.includes(this.state.search)) ||
+      if (planet.bio.includes(this.state.search)) 
+    }
+    return searches
+  }
+
   render(){
     // console.log(this.state.planeteers)
     let {planeteers} = this.state
     return (
       <div>
         <Header />
-        <SearchBar search={this.state.search} handleInput={this.handleInput}/>
+        <SearchBar
+          search={this.state.search}
+          handleInput={this.handleInput}
+        />
         <RandomButton/>
-        <PlaneteersContainer planeteers={planeteers}/>
+        <PlaneteersContainer planeteers={this.handleSearch()}/>
       </div>
     );
   }
