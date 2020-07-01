@@ -23,14 +23,21 @@ class App extends React.Component {
   }
 
   returnArray = () => {
-    let array = this.state.planeteerArray;
-    array = array.filter((planeteer) => {
-      planeteer.name
-        .toLowerCase()
-        .includes(this.state.searchTerm.toLowerCase());
-    });
+    let array = this.state.planeteerArray.filter((planeteer) =>
+      planeteer.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    );
     return array;
   };
+
+  // returnArray = () => {
+  //   let array = this.state.planeteerArray;
+  //   if (this.state.searchterm !== "") {
+  //     array = array.filter((planeteer) => {
+  //       planeteer.name.toLowerCase().includes(this.state.search.toLowerCase());
+  //     });
+  //   }
+  //   return array;
+  // };
 
   searchPlaneteer = (searchText) => {
     console.log(this.state.searchTerm);
@@ -42,7 +49,6 @@ class App extends React.Component {
   render() {
     // console.log(this.state.planeteerArray);
     let dispayArray = this.returnArray();
-    console.log(displayArray);
     return (
       <div>
         <Header />
