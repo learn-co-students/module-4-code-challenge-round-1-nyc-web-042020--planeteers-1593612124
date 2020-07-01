@@ -13,6 +13,7 @@ class App extends React.Component {
     checked: false
   }
 
+  // fetch data from db.json
   componentDidMount(){
     fetch("http://localhost:4000/planeteers")
     .then(r => r.json())
@@ -23,12 +24,14 @@ class App extends React.Component {
     })
   }
 
+  //updates state of searchterm
   updateSearchTerm = (termfromChild) => {
     this.setState({
       searchTerm: termfromChild
     })
   }
 
+  //updates state of checked
   updateCheckedState = (checkFromChild) => {
     this.setState((prevState) => {
       return {
@@ -37,6 +40,7 @@ class App extends React.Component {
     })
   }
 
+  //adds random planeteer
   addNewPlaneteer = (newPlaneteerInstance) => {
     let arrayToDisplay = [...this.state.planeteersList, newPlaneteerInstance]
 
@@ -45,8 +49,10 @@ class App extends React.Component {
     })
   }
 
+  //determines array to display
   arrayToRender = () => {
     let arrayToDisplay = this.state.planeteersList
+    // filters by search
     if (this.state.searchTerm.length > 1){
       arrayToDisplay = this.state.planeteersList.filter((planeteerPOJO) => {
         return (
@@ -55,16 +61,24 @@ class App extends React.Component {
           planeteerPOJO.bio.toLowerCase().includes(this.state.searchTerm.toLowerCase())
         )
       })
+      if (this.state.checked === true){
+        arrayToDisplay = [...this.state.planeteersList].sort((planeteerA, planeteerB) => {
+          return planeteerB.born - planeteerA.born
+        })
+      } 
     } 
+
+    // sorts by age
     if (this.state.checked === true){
       arrayToDisplay = [...this.state.planeteersList].sort((planeteerA, planeteerB) => {
         return planeteerB.born - planeteerA.born
       })
     }
-
+  
     return arrayToDisplay
   }
 
+  //render function
   render(){
     return (
       <div>

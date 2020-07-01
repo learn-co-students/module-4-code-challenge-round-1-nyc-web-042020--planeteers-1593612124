@@ -55,6 +55,7 @@ class RandomButton extends React.Component {
     .then(r => r.json())
     .then((newPlaneteer) => {
       this.props.addNewPlaneteer(newPlaneteer)
+      alert("Random Planeteer Added")
     })
   }
 

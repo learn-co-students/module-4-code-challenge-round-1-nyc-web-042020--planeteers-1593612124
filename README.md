@@ -13,17 +13,17 @@
 
 ## Endpoints
 
-The base URL for your backend is: `http://localhost:4000`
+    The base URL for your backend is: `http://localhost:4000`
 
-These are the endpoints you might need:
+    These are the endpoints you might need:
 
-- GET: `/planeteers`
-- POST: `/planeteers`
-- DELETE: `/planeteers/:id`
+    - GET: `/planeteers`
+    - POST: `/planeteers`
+    - DELETE: `/planeteers/:id`
 
 ## What You Already Have
 
-The `App` component holds four children: `Header`, `SearchBar`, `RandomButton`, and `PlaneteersContainer`. `Header`, `SearchBar`, and `RandomButton` have some starter code in them already. The `PlaneteersContainer` component will render all `Planeteer` components.
+    The `App` component holds four children: `Header`, `SearchBar`, `RandomButton`, and `PlaneteersContainer`. `Header`, `SearchBar`, and `RandomButton` have some starter code in them already. The `PlaneteersContainer` component will render all `Planeteer` components.
 
     All of the code to style the page has been written for you, meaning that you should be adding to the code rather than editing it; however, if your finished product has some styling issues, don't worry too much about it.
 
@@ -47,10 +47,10 @@ The `App` component holds four children: `Header`, `SearchBar`, `RandomButton`, 
 
     - See the age of the planeteer in the `Planeteer` component (To calculate the age, first figure out how to get the current year in JavaScript and then subtract the planeteer's birth year from it.)
     - Click the `RandomButton` to render a random planeteer to the list of planeteers on the page. Additionally, the new random planeteer should be persisted to the database.
-    - Click on a checkbox in the `SearchBar` component that, when checked, sorts the planeteers in the `PlaneteersContainer` from youngest to oldest. 
-* When unchecked, the planeteers should be sorted by ID. When viewing a filtered list of planeteers, the sort should only sort the filtered list.
+    - Click on a checkbox in the `SearchBar` component that, when checked, sorts the planeteers in the `PlaneteersContainer` from youngest to oldest. When unchecked, the planeteers should be sorted by ID. 
+When viewing a filtered list of planeteers, the sort should only sort the filtered list.
 
-![Planeteers advanced deliverables](public/planeteers-advanced-deliverables.gif)
+    ![Planeteers advanced deliverables](public/planeteers-advanced-deliverables.gif)
 
 ## Rubric
 
