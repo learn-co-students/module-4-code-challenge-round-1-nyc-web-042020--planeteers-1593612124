@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Planeteer = ({planeteer, toggleImage, handleClick}) => {
+  
   const {name, fromUSA, bio, quote, pictureUrl, twitter, isClicked} = planeteer 
+  
   toggleImage = (img) => {
     if (img === pictureUrl) {
       return bio 
