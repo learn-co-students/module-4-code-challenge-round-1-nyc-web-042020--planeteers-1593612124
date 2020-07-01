@@ -28,20 +28,10 @@ class App extends React.Component {
     })
   }
 
-  // handleSearch = (e) => {
-  //   let searches = this.state.planeteers.filter(planet => planet.name.toLowerCase().includes(this.state.search.toLowerCase()))
-  //   return searches
-  //   // let searchesBio = this.state.planeteers.filter(planet => planet.bio.toLowerCase().includes(this.state.search))
-  //   // return searchesBio
-  // }
-
   handleSearch = (e) => {
     let searches = this.state.planeteers.filter(planet => {
-      if (
-        planet.name.toLowerCase().includes(this.state.search.toLowerCase()) ||
-        planet.bio.toLowerCase().includes(this.state.search.toLowerCase())
-      )
-
+      if ( planet.name.toLowerCase().includes(this.state.search.toLowerCase()) ||
+        planet.bio.toLowerCase().includes(this.state.search.toLowerCase()) )
     return planet
     })
 
