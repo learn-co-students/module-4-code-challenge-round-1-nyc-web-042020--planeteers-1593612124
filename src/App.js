@@ -9,7 +9,8 @@ import SearchBar from './Components/SearchBar'
 class App extends React.Component {
   state={
     planeteersList: [],
-    searchTerm: ""
+    searchTerm: "",
+    checked: false
   }
 
   componentDidMount(){
@@ -25,6 +26,14 @@ class App extends React.Component {
   updateSearchTerm = (termfromChild) => {
     this.setState({
       searchTerm: termfromChild
+    })
+  }
+
+  addNewPlaneteer = (newPlaneteerInstance) => {
+    let arrayToDisplay = [...this.state.planeteersList, newPlaneteerInstance]
+
+    this.setState({
+      planeteersList: arrayToDisplay
     })
   }
 
@@ -50,7 +59,9 @@ class App extends React.Component {
           searchTerm={this.state.searchTerm}
           updateSearchTerm={this.updateSearchTerm}
         />
-        <RandomButton/>
+        <RandomButton
+          addNewPlaneteer={this.addNewPlaneteer}
+        />
         <PlaneteersContainer 
           planeteers={this.arrayToRender()}
         />

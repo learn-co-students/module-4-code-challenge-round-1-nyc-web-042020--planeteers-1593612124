@@ -6,15 +6,30 @@ class SearchBar extends React.Component {
     this.props.updateSearchTerm(evt.target.value)
   }
 
+  handleInputSort
+
   render() {
     return (
       <div className="search">
         <form>
-          <input
-            placeholder="Who would you like to search for?"
-            value={this.props.searchTerm}
-            onChange={this.handleInput}
+          <label>
+            Search
+            <input
+              placeholder="Who would you like to search for?"
+              value={this.props.searchTerm}
+              onChange={this.handleInput}
+            />
+          </label>
+          <br />
+          <label>
+          Sort By Age:
+          <input 
+            name="sort"
+            type="checkbox"
+            checked={this.props.checked}
+            onChange={this.handleInputSort}
           />
+          </label>
         </form>
       </div>
     );
