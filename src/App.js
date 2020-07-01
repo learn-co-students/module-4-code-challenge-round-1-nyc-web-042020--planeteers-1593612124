@@ -11,7 +11,7 @@ class App extends React.Component {
 
   state = {
     planeteers: [],
-    searchTerm: ""
+    searchTerm: " "
   }
 
  
@@ -24,10 +24,28 @@ class App extends React.Component {
 
   
   handleSearch = () => {
-    let searchList = this.state.planeteers.filter(x => { 
-      return (x.name.includes(this.state.searchTerm) || x.bio.includes(this.state.searchTerm))
+    //let searchList = this.state.planeteers
+    // if (this.state.searchTerm !== "") {
+    //let searchList = this.state.planeteers
+    
+    
+ 
+    let searchList = this.state.planeteers.filter((x) => { 
+      return (x.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || x.bio.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
     })
+    console.log(searchList)
+
+    if (searchList.length === 0) {
+      return this.state.planeteers
+    }
+    if (searchList.length !== 0) {
     return searchList
+    }
+
+
+    
+    
+
   }
 
   updateSearchTerm = (term) => {
