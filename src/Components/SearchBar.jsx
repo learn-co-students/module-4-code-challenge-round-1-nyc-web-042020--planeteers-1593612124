@@ -1,17 +1,20 @@
 import React from "react";
 
 class SearchBar extends React.Component {
-  handleChange = (e) => {
-    console.log(e.target.value);
+  handleInput = (e) => {
+    this.props.searchPlaneteer(e.target.value);
   };
 
   render() {
     return (
-      <div
-        className="search"
-        value={this.props.searchTerm}
-        onChange={this.handleChange}
-      ></div>
+      <div className="search">
+        <input
+          type="search"
+          placeholder="Search"
+          value={this.props.searchTerm}
+          onChange={this.handleInput}
+        />
+      </div>
     );
   }
 }

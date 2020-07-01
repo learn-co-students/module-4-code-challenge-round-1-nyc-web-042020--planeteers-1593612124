@@ -23,7 +23,18 @@ class App extends React.Component {
   }
 
   returnArray = () => {
-    return this.state.planeteerArray;
+    let array = this.state.planeteerArray;
+
+    // array = this.state.planeteerArray.filter
+    //   (planeteer => planeteer.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    return array;
+  };
+
+  searchPlaneteer = (searchText) => {
+    console.log(this.state.searchTerm);
+    this.setState({
+      searchTerm: searchText,
+    });
   };
 
   render() {
@@ -32,7 +43,10 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <SearchBar searchTerm={this.state.searchTerm} />
+        <SearchBar
+          searchTerm={this.state.searchTerm}
+          searchPlaneteer={this.searchPlaneteer}
+        />
         <RandomButton />
         <PlaneteersContainer planeteers={dispayArray} />
       </div>
