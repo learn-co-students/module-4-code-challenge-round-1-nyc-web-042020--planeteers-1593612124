@@ -1,37 +1,34 @@
 import React from 'react';
 
-const Planeteer = ({planeteer, toggleImage, handleClick}) => {
-  
-  const {name, fromUSA, bio, quote, pictureUrl, twitter, isClicked} = planeteer 
-  
-  toggleImage = (img) => {
-    if (img === pictureUrl) {
-      return bio 
-    } 
-    else {
-      return quote 
-    }
+class Planeteer extends React.Component {
+  state = {
+    showBio: true 
   }
-  
+   
   handleClick = (e) => {
-    e.target.src = toggleImage(e.target.src) 
+    const para = this.state.showBio 
+    this.setState({
+      showBio: !para 
+    }) 
   }
-
+  render() {
     return (
       <li className="cards__item">
         <div className="card">
-          <img onClick={e => handleClick(e)} src={pictureUrl} alt={name} className="card__image" />
+          <img onClick={e => this.handleClick(e)} src={this.props.planeteer.pictureUrl} alt={this.props.planeteer.name} className="card__image" />
           <div className="card__content">
-            <div className="card__title">{name}</div>
-            <p className="card__text">{isClicked ? bio : quote}</p>
+            <div className="card__title">{this.props.planeteer.name}</div>
+            <p className="card__text">{this.state.showBio ? this.props.planeteer.bio : this.props.planeteer.quote}</p>
             <div className="card__detail">
-              <p>{twitter}</p>
-              <p>{fromUSA ? "USA-based" : "Working overseas"}</p>
+              <p>{this.props.planeteer.twitter}</p>
+              <p>{this.props.planeteer.fromUSA ? "USA-based" : "Working overseas"}</p>
             </div>
           </div>
         </div>
       </li>
     );
+  }
+    
 }
 
 export default Planeteer;
