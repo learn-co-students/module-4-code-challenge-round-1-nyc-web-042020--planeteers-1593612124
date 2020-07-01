@@ -13,7 +13,10 @@ class Planeteer extends React.Component {
   }
 
   render() {
-    let { name, fromUSA, bio, quote, pictureUrl, twitter} = this.props.planeteer
+    let { name, fromUSA, bio, quote, pictureUrl, twitter, born } = this.props.planeteer
+
+    let date = new Date ()
+    let currentYear = date.getFullYear()
     return (
       <li className="cards__item">
         <div className="card" >
@@ -23,8 +26,9 @@ class Planeteer extends React.Component {
             <p className="card__text">{this.state.displayBio ? bio : quote}</p>
             <div className="card__detail">
               <p>{twitter}</p>
-              <p>{fromUSA ? "USA-based" : "Working overseas"}</p>
             </div>
+              <p>{fromUSA ? "USA-based" : "Working overseas"}</p>
+              <p>Age: {currentYear - parseInt(born)} years</p>
           </div>
         </div>
       </li>

@@ -10,7 +10,8 @@ class App extends React.Component {
 
   state = {
     planeteers: [],
-    search: ""
+    search: "",
+    sortedById: true
   }
 
   componentDidMount(){
@@ -29,7 +30,26 @@ class App extends React.Component {
       arrayOfPlaneteers = this.state.planeteers.filter(planeteer => 
         planeteer.name.includes(this.state.search) || planeteer.bio.includes(this.state.search)
       )
+      if (this.state.sortedById) {
+        arrayOfPlaneteers.sort((planetA, planetB) => {
+          return planetA.id - planetB.id
+        })
+      } else {
+        arrayOfPlaneteers.sort((planetA, planetB) => {
+          return planetB.born - planetA.born
+        })
+      }
     }
+    if (this.state.sortedById) {
+      arrayOfPlaneteers.sort((planetA, planetB) => {
+        return planetA.id - planetB.id
+      })
+    } else {
+      arrayOfPlaneteers.sort((planetA, planetB) => {
+        return planetB.born - planetA.born
+      })
+    }
+    
     return arrayOfPlaneteers
   }
 
@@ -39,13 +59,28 @@ class App extends React.Component {
     })
   }
 
+  addRandomPlaneteer = (planeteer) => {
+    let newArray = this.state.planeteers
+    newArray.push(planeteer)
+    this.setState(newArray)
+  }
+
+  handleCheck = () => {
+    this.setState({
+      sortedById: !this.state.sortedById
+    })
+  }
 
   render(){
     return (
       <div>
         <Header />
-        <SearchBar search={this.state.search} handleChange={this.handleChange}/>
-        <RandomButton/>
+        <SearchBar 
+        search={this.state.search} 
+        handleChange={this.handleChange} 
+        sortedById={this.state.sortedById} 
+        handleCheck={this.handleCheck}/>
+        <RandomButton addRandomPlaneteer={this.addRandomPlaneteer}/>
         <PlaneteersContainer planeteers={this.renderPlaneteers()}/>
       </div>
     );
