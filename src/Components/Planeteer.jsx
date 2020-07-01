@@ -1,5 +1,8 @@
 import React from "react";
 
+let t1 = new Date();
+let year = t1.getFullYear();
+
 class Planeteer extends React.Component {
   state = {
     cardInfo: true,
@@ -12,6 +15,7 @@ class Planeteer extends React.Component {
   };
 
   render() {
+    // console.log(year);
     let {
       name,
       fromUSA,
@@ -34,6 +38,7 @@ class Planeteer extends React.Component {
             <div className="card__title">{name}</div>
             <p className="card__text">{this.state.cardInfo ? bio : quote}</p>
             <div className="card__detail">
+              <p>Age: {year - born}</p>
               <p>{twitter}</p>
               <p>{fromUSA ? "USA-based" : "Working overseas"}</p>
             </div>
