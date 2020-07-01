@@ -6,9 +6,9 @@ class SearchBar extends React.Component {
     this.props.updateSearchTerm(evt.target.value)
   }
 
-  // handleInputSort = (evt) => {
-  //   this.props.updateCheckedState(evt.target.value)
-  // }
+  handleInputSort = (evt) => {
+    this.props.updateCheckedState(evt.target.value)
+  }
 
   render() {
     return (
@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
               onChange={this.handleInput}
             />
           </label>
-          {/* <br />
+          <br />
           <label>
           Sort By Age:
           <input 
@@ -31,7 +31,7 @@ class SearchBar extends React.Component {
             checked={this.props.checked}
             onChange={this.handleInputSort}
           />
-          </label> */}
+          </label>
         </form>
       </div>
     );

@@ -10,7 +10,7 @@ class App extends React.Component {
   state={
     planeteersList: [],
     searchTerm: "",
-    // checked: false
+    checked: false
   }
 
   componentDidMount(){
@@ -29,13 +29,13 @@ class App extends React.Component {
     })
   }
 
-  // updateCheckedState = (checkFromChild) => {
-  //   this.setState((prevState) => {
-  //     return {
-  //       checked: !prevState.checked
-  //     }
-  //   })
-  // }
+  updateCheckedState = (checkFromChild) => {
+    this.setState((prevState) => {
+      return {
+        checked: !prevState.checked
+      }
+    })
+  }
 
   addNewPlaneteer = (newPlaneteerInstance) => {
     let arrayToDisplay = [...this.state.planeteersList, newPlaneteerInstance]
@@ -56,11 +56,11 @@ class App extends React.Component {
         )
       })
     } 
-    // if (this.state.checked === true){
-    //   arrayToDisplay = this.state.planeteersList.sort((planeteerA, planeteerB) => {
-    //     return planeteerA.age - planeteerB.age
-    //   })
-    // }
+    if (this.state.checked === true){
+      arrayToDisplay = [...this.state.planeteersList].sort((planeteerA, planeteerB) => {
+        return planeteerB.born - planeteerA.born
+      })
+    }
 
     return arrayToDisplay
   }
