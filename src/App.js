@@ -8,13 +8,32 @@ import SearchBar from './Components/SearchBar'
 
 class App extends React.Component {
 
+  state = {
+    planeteers: [],
+    searchTerm: []
+  }
+
+   componentDidMount(){
+      fetch("http://localhost:4000/planeteers")
+        .then(resp => resp.json())
+        .then(planeteersArray => {
+         // console.log(planeteersArray)
+    
+          this.setState({
+            planeteers: planeteersArray
+          })
+        })
+    }
+
+
   render(){
+    const {planeteers, searchTerm} = this.state
     return (
       <div>
         <Header />
-        <SearchBar />
+        <SearchBar searchTerm={searchTerm}/>
         <RandomButton/>
-        <PlaneteersContainer />
+        <PlaneteersContainer planeteers={planeteers}/>
       </div>
     );
   }
