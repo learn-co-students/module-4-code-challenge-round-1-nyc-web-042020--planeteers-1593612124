@@ -32,8 +32,29 @@ All of the code to style the page has been written for you, meaning that you sho
 As a user, I should be able to:
 
 - See list of planeteers on the page, using the `Planeteer` component. The `Planeteer` component should display the planeteer's image, name, bio, Twitter handle, and conditionally render where they are based. If they are from the USA, the component should say "USA-based", otherwise it should say "Working overseas".
+
+NEED FETCH GET
+    - IMAGE
+    - NAME
+    - BIO
+    - TWITTER HANDLE
+    - CONDITIONAL LOCATION
+        - NEED TERNARY LOGIC BASED ON BOOLEAN FROMUSA HANDLE IN COMPONENT
+
+
 - Click on the image of the planeteer in the `Planeteer` component and see the quote for that planeteer in place of the bio. If I click on the image again, the quote should again be replaced with the bio. If I click on another planeteer's image, it toggles that planeteer's bio independent of any other planeteer's.
+
+NEED ONCLICK WITHIN COMPONENT FOR IMAGE CLICK
+    - NEED CLICKED STATE BOOLEAN
+        - NEED TERNARY LOGIC BASED ON BOOLEAN STATE TO SWAP BETWEEN BIO AND QUOTE
+
+
 - Type in the `SearchBar` component and see the list of planeteers whose name or bio match the text in the search bar. If there's no text in the search bar, all the planeteers should be rendered.
+
+NEED TO FILTER PLANETEER ARRAY
+    - NEED IF/THEN LOGIC IN PARENT LEVEL TO CONTROL FILTER ==!
+    - ALL = ALL 
+    - FILTER BASED ON NAME AND BIO
 
 ![Planeteers core deliverables](public/planeteers-core-deliverables.gif)
 
