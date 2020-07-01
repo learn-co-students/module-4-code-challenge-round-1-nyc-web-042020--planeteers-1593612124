@@ -42,6 +42,13 @@ class App extends React.Component {
       return filteredArray
   }
 
+  addRandomPlaneteer = (newPlaneteer) => {
+    let copyOfPlaneteers = [...this.state.planeteers, newPlaneteer]
+    this.setState({
+      planeteers: copyOfPlaneteers
+    })
+  }
+
   render(){
     return (
       <div>
@@ -49,7 +56,7 @@ class App extends React.Component {
         <SearchBar 
           changeSearchTerm={this.changeSearchTerm}
           searchTerm={this.state.searchTerm}/>
-        <RandomButton/>
+        <RandomButton addRandomPlaneteer={this.addRandomPlaneteer}/>
         <PlaneteersContainer 
           planeteers={this.searchTermArray()}/>
       </div>

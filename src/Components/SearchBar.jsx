@@ -9,7 +9,9 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className="search">
+        <p>Search</p>
         <input 
+          placeholder="Who would you like to search for?"
           className="searchTerm" 
           type="text" 
           value={this.props.searchTerm}
