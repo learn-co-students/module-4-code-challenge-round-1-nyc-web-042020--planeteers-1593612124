@@ -11,7 +11,7 @@ class Planeteer extends React.Component {
   }
 
   render() {
-    const { id, name, fromUSA, born, bio, quote, pictureUrl, twitter } = this.props.planeteer
+    const { name, fromUSA, born, bio, quote, pictureUrl, twitter } = this.props.planeteer
 
     const today = new Date()
     const currentYear = today.getFullYear()

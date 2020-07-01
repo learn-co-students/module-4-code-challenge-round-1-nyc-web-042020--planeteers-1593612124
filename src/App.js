@@ -31,7 +31,6 @@ class App extends React.Component {
   }
 
   addNewPlaneteer = (newPlaneteer) => {
-
     if (newPlaneteer) {
       const arrayOfDuplicates = this.state.planeteers.filter(planeteer => planeteer.name === newPlaneteer.name)
       
@@ -63,7 +62,7 @@ class App extends React.Component {
     this.setState((prevState) => {return {sort: !prevState.sort}})
   }
 
-  render(){
+  render() {    
     return (
       <div>
         <Header />

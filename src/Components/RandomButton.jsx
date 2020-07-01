@@ -1,6 +1,6 @@
 import React from 'react';
 
-const arrayOfPlaneteers = [
+export const arrayOfPlaneteers = [
   {
     name: "Greta Thunberg",
     fromUSA: false,
