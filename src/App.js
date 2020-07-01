@@ -30,6 +30,23 @@ class App extends React.Component {
     }
   }
 
+  addNewPlaneteer = (newPlaneteer) => {
+
+    if (newPlaneteer) {
+    const configObj = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(newPlaneteer)
+    }
+
+    fetch(`http://localhost:4000/planeteers`, configObj)
+      .then(resp => resp.json())
+      .then(json => this.setState((prevState) => { return { planeteers: [...prevState.planeteers, json] } }))
+    }
+  }
+
   handleSearch = (e) => {
     this.setState({searchTerm: e.target.value})
   }
@@ -43,7 +60,7 @@ class App extends React.Component {
       <div>
         <Header />
         <SearchBar searchTerm={this.state.searchTerm} sort={this.state.sort} handleSearch={this.handleSearch} handleSort={this.handleSort}/>
-        <RandomButton/>
+        <RandomButton addNewPlaneteer={this.addNewPlaneteer}/>
         <PlaneteersContainer planeteers={this.renderPlaneteers()}/>
       </div>
     );
