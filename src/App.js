@@ -7,14 +7,53 @@ import PlaneteersContainer from './Components/PlaneteersContainer'
 import SearchBar from './Components/SearchBar'
 
 class App extends React.Component {
+  state={
+    planeteersList: [],
+    searchTerm: ""
+  }
+
+  componentDidMount(){
+    fetch("http://localhost:4000/planeteers")
+    .then(r => r.json())
+    .then((planeteers) => {
+      this.setState({
+        planeteersList: planeteers
+      })
+    })
+  }
+
+  updateSearchTerm = (termfromChild) => {
+    this.setState({
+      searchTerm: termfromChild
+    })
+  }
+
+  arrayToRender = () => {
+    let arrayToDisplay = this.state.planeteersList
+    if (this.state.searchTerm.length > 1){
+      arrayToDisplay = this.state.planeteersList.filter((planeteerPOJO) => {
+        return (
+          planeteerPOJO.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+          ||
+          planeteerPOJO.bio.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+        )
+      })
+    }
+    return arrayToDisplay
+  }
 
   render(){
     return (
       <div>
         <Header />
-        <SearchBar />
+        <SearchBar 
+          searchTerm={this.state.searchTerm}
+          updateSearchTerm={this.updateSearchTerm}
+        />
         <RandomButton/>
-        <PlaneteersContainer />
+        <PlaneteersContainer 
+          planeteers={this.arrayToRender()}
+        />
       </div>
     );
   }
