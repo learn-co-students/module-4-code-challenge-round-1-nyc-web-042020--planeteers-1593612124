@@ -10,7 +10,8 @@ class App extends React.Component {
 
   state = {
     planeteers: [],
-    searchTerm: ""
+    searchTerm: "",
+    sort: false
   }
 
   componentDidMount() {
@@ -20,18 +21,28 @@ class App extends React.Component {
   }
 
   renderPlaneteers = () => {
-    return this.state.planeteers.filter(planeteer => planeteer.name.toLowerCase().includes(this.state.searchTerm) || planeteer.bio.toLowerCase().includes(this.state.searchTerm))
+    if (this.state.sort) { 
+      return this.state.planeteers.sort((a, b) => b.born - a.born).filter(planeteer => planeteer.name.toLowerCase().includes(this.state.searchTerm) || planeteer.bio.toLowerCase().includes(this.state.searchTerm))
+    }
+    
+    else {
+      return this.state.planeteers.sort((a, b) => a.id - b.id).filter(planeteer => planeteer.name.toLowerCase().includes(this.state.searchTerm) || planeteer.bio.toLowerCase().includes(this.state.searchTerm))
+    }
   }
 
   handleSearch = (e) => {
     this.setState({searchTerm: e.target.value})
   }
 
+  handleSort = () => {
+    this.setState((prevState) => {return {sort: !prevState.sort}})
+  }
+
   render(){
     return (
       <div>
         <Header />
-        <SearchBar searchTerm={this.state.searchTerm} handleSearch={this.handleSearch}/>
+        <SearchBar searchTerm={this.state.searchTerm} sort={this.state.sort} handleSearch={this.handleSearch} handleSort={this.handleSort}/>
         <RandomButton/>
         <PlaneteersContainer planeteers={this.renderPlaneteers()}/>
       </div>
