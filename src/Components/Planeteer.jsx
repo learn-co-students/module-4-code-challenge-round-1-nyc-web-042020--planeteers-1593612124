@@ -1,25 +1,47 @@
-import React from 'react';
+import React from "react";
 
 class Planeteer extends React.Component {
+  state = {
+    cardInfo: true,
+  };
+
+  handleClick = (e) => {
+    this.setState({
+      cardInfo: !this.state.cardInfo,
+    });
+  };
 
   render() {
+    let {
+      name,
+      fromUSA,
+      born,
+      bio,
+      quote,
+      pictureUrl,
+      twitter,
+    } = this.props.planeteer;
     return (
       <li className="cards__item">
         <div className="card">
-          <img src={"RENDER IMAGE"} alt={"RENDER PERSON NAME"} className="card__image" />
+          <img
+            src={pictureUrl}
+            alt={name}
+            className="card__image"
+            onClick={this.handleClick}
+          />
           <div className="card__content">
-            <div className="card__title">{"RENDER NAME"}</div>
-            <p className="card__text">{"CONDITIONALLY RENDER BIO OR QUOTE"}</p>
+            <div className="card__title">{name}</div>
+            <p className="card__text">{this.state.cardInfo ? bio : quote}</p>
             <div className="card__detail">
-              <p>{"RENDER TWITTER HANDLE"}</p>
-              <p>{"CONDITIONALLY RENDER WHETHER THE PERSON IS USA-BASED OR WORKING OVERSEAS"}</p>
+              <p>{twitter}</p>
+              <p>{fromUSA ? "USA-based" : "Working overseas"}</p>
             </div>
           </div>
         </div>
       </li>
     );
   }
-
 }
 
 export default Planeteer;
