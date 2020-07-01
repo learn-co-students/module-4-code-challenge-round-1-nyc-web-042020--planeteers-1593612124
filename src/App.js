@@ -20,43 +20,23 @@ class App extends React.Component {
     fetch(`http://localhost:4000/planeteers`).then(r => r.json()).then(data => this.setState({planeteers: data}))
   }
 
- 
-
-  
   handleSearch = () => {
-    //let searchList = this.state.planeteers
-    // if (this.state.searchTerm !== "") {
-    //let searchList = this.state.planeteers
-    
-    
- 
+
     let searchList = this.state.planeteers.filter((x) => { 
       return (x.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || x.bio.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
     })
-    console.log(searchList)
-
     if (searchList.length === 0) {
       return this.state.planeteers
     }
     if (searchList.length !== 0) {
-    return searchList
+      return searchList
     }
-
-
-    
-    
-
   }
 
   updateSearchTerm = (term) => {
     this.setState({searchTerm: term})
   }
-
-
-
   render(){
-
-    //console.log("updated", this.state.searchTerm)
     return (
       <div>
         <Header />
