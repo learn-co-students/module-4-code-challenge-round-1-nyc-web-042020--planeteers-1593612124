@@ -29,7 +29,7 @@ class App extends React.Component {
   
     let copyOfArr = this.state.planeteers.filter((p)=>{
       
-      return p.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()) 
+      return p.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||  p.bio.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     })
     return copyOfArr
   }

@@ -20,7 +20,7 @@ class Planeteer extends React.Component {
           <img src={pictureUrl} alt={name} className="card__image" onClick={this.handleClick} />
           <div className="card__content">
             <div className="card__title">{name}</div>
-            <p className="card__text">{this.state.picClick ? this.props.planeteer.bio : this.props.planeteer.quote }</p>
+            <p className="card__text">{this.state.picClick ? this.props.planeteer.quote : this.props.planeteer.bio }</p>
             <div className="card__detail">
               <p>{twitter}</p>
               <p>{this.props.planeteer.fromUSA ? "USA-based" : "Working overseas" }</p>
