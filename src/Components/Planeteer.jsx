@@ -8,6 +8,11 @@ class Planeteer extends React.Component {
     const val = this.state.showBio
     this.setState({showBio:!val})
   }
+  getage=()=>{
+    const date = new Date()
+    const year =(date.getFullYear());
+    return year-this.props.planeteer.born
+  }
   render() {
     return (
       <li className="cards__item">
@@ -18,6 +23,7 @@ class Planeteer extends React.Component {
             <p className="card__text">{this.state.showBio ? this.props.planeteer.bio : this.props.planeteer.quote}</p>
             <div className="card__detail">
               <p>{this.props.planeteer.twitter}</p>
+              <p>{this.getage()}</p>
               <p>{this.props.planeteer.fromUSA ? 'USA-based':'Working overseas'}</p>
             </div>
           </div>
