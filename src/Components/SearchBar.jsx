@@ -11,7 +11,7 @@ this.props.changeTerm(e.target.value)
     return (
       <div className="search">
         Search Bar: <br></br>
-        <input type="text" placeholder="Who Would you Like to Search For?" value={this.props.searchTerm} onChange={this.handleChange}></input>
+        <input className="searchTerm" type="text" placeholder="Who Would you Like to Search For?" value={this.props.searchTerm} onChange={this.handleChange}></input>
       </div>
     );
   }

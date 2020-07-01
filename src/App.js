@@ -34,17 +34,24 @@ class App extends React.Component {
     return copyOfArr
   }
 
+  addPlaneteer = (newPlaneteer) => {
+    // console.log(newPlaneteer)
+     let copy = [...this.state.planeteers, newPlaneteer]
+     this.setState({planeteers: copy})
+  }
 
 
   render(){
-  
+  console.log(this.state.planeteers)
     return (
       <div>
         <Header />
         <SearchBar 
         searchTerm={this.state.searchTerm}
         changeTerm = {this.changeTerm}/>
-        <RandomButton/>
+        <RandomButton
+        addPlaneteer = {this.addPlaneteer}
+        />
         <PlaneteersContainer
         planeteers = {this.filteredSearches()} 
         />

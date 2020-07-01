@@ -44,8 +44,20 @@ class RandomButton extends React.Component {
 
   handleClick = () => {
     const randomPlaneteer = arrayOfPlaneteers[Math.floor(Math.random() * arrayOfPlaneteers.length)]
-    console.log(randomPlaneteer);
+    let value = randomPlaneteer
+    fetch('http://localhost:4000/planeteers', {
+      method: "POST",
+      headers: {
+        "content-type": "application/JSON"
+      },
+      body: JSON.stringify({name: randomPlaneteer.name, bio: randomPlaneteer.bio, quote: randomPlaneteer.quote, fromUSA: randomPlaneteer.fromUSA, pictureUrl: randomPlaneteer.pictureUrl, born: randomPlaneteer.born, twitter: randomPlaneteer.twitter})
+    })
+    .then(resp => resp.json())
+    .then((randomPlaneteer) => {
+      this.props.addPlaneteer(randomPlaneteer)
+    })
   }
+
 
   render() {
     return (
@@ -53,6 +65,7 @@ class RandomButton extends React.Component {
         <button onClick={this.handleClick} id="random-planeteer">
           Click to Add a Random Planeteer
         </button>
+ 
       </div>
     );
   }
