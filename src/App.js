@@ -39,6 +39,25 @@ class App extends React.Component {
     })
   }
 
+  addPlaneteer = (planeteerObj) => {
+    console.log(planeteerObj)
+    fetch("http://localhost:4000/planeteers", {
+      method: "POST", 
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(planeteerObj)
+    })
+    .then(resp => resp.json())
+    .then(this.setState((prevState) => {
+      return {
+        planeteerList: [...prevState.planeteerList, planeteerObj]
+      }
+
+    }))
+  }
+
 
 
   render(){
@@ -50,7 +69,9 @@ class App extends React.Component {
         setStateFunction = {this.setSearchState}
         searchState = {this.state.searchTerm}
         />
-        <RandomButton/>
+        <RandomButton
+        addFunction = {this.addPlaneteer}
+        />
         <PlaneteersContainer 
         planeteerList = {displayArr}
         />

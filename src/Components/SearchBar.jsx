@@ -11,6 +11,7 @@ class SearchBar extends React.Component {
       <div className="search">
         <h3>Search</h3>
         <input type="text" value={this.props.searchState} onChange={this.handleChange} name="search-term"/>
+        {/* <input type="checkbox" name ="age-order" checked={this.state.checked} onChange={this.handleInputChange}/> */}
       </div>
     );
   }

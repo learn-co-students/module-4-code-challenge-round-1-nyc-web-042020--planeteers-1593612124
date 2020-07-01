@@ -6,7 +6,7 @@ const PlaneteersContainer = (props) => {
   let componentArr = props.planeteerList.map((planeteer) => {
     return <Planeteer
     planeteerObj = {planeteer}
-    key = {planeteer.id}
+    key = {planeteer.name}
     />
   })
 
