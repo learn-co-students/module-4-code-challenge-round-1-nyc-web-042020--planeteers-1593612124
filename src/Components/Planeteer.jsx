@@ -3,8 +3,7 @@ import React from 'react';
 class Planeteer extends React.Component {
 
   state = {
-    bio: true,
-    fromUSA: true
+    bio: true
   }
 
   handleClick = (event) => {
@@ -23,7 +22,7 @@ class Planeteer extends React.Component {
             <p className="card__text">{this.state.bio ? bio : quote}</p>
             <div className="card__detail">
               <p>{twitter}</p>
-              <p>{this.state.fromUSA ? "USA-based" : "Working overseas"}</p>
+              <p>{fromUSA ? "USA-based" : "Working overseas"}</p>
             </div>
           </div>
         </div>
