@@ -11,8 +11,10 @@ class Planeteer extends React.Component {
   }
 
   render() {
-
     const { id, name, fromUSA, born, bio, quote, pictureUrl, twitter } = this.props.planeteer
+
+    const today = new Date()
+    const currentYear = today.getFullYear()
 
     return (
       <li className="cards__item" onClick={this.handleClick}>
@@ -23,6 +25,7 @@ class Planeteer extends React.Component {
             <p className="card__text">{this.state.clicked ? quote : bio}</p>
             <div className="card__detail">
               <p>{twitter}</p>
+              <p>{currentYear - born} years old</p>
               <p>{fromUSA ? "USA-based" : "Working overseas"}</p>
             </div>
           </div>
