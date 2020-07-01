@@ -10,7 +10,8 @@ class App extends React.Component {
 
   state = {
     planeteers : [],
-    searchTerm: ""
+    searchTerm: "",
+    checked: false
   }
 
   componentDidMount(){
@@ -25,14 +26,17 @@ class App extends React.Component {
     this.setState({searchTerm: term})
   }
 
+
+
   filteredSearches = () => {
-  
+
     let copyOfArr = this.state.planeteers.filter((p)=>{
       
       return p.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||  p.bio.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     })
-    return copyOfArr
+  return copyOfArr
   }
+  
 
   addPlaneteer = (newPlaneteer) => {
     // console.log(newPlaneteer)
@@ -40,15 +44,23 @@ class App extends React.Component {
      this.setState({planeteers: copy})
   }
 
+  changeCheck = () => {
+    this.setState((prevState) =>{
+      
+      return {checked: !prevState.checked}
+    })
+  }
 
   render(){
-  console.log(this.state.planeteers)
+    console.log('i wish sorting worked but the value is', this.state.checked)
     return (
       <div>
         <Header />
         <SearchBar 
         searchTerm={this.state.searchTerm}
-        changeTerm = {this.changeTerm}/>
+        changeTerm = {this.changeTerm}
+        changeCheck = {this.changeCheck}
+       />
         <RandomButton
         addPlaneteer = {this.addPlaneteer}
         />
