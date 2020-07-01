@@ -16,7 +16,6 @@ class Planeteer extends React.Component {
 
   render() {
     //deconstruct props.planeteer 
-    console.log(this.state.clicked)
     let {bio, born, fromUSA, name, pictureUrl, quote, twitter} = this.props.planeteer
     return (
       <li className="cards__item">
