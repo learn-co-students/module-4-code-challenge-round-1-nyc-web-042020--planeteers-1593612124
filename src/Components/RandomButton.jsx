@@ -39,28 +39,36 @@ const arrayOfPlaneteers = [
   }
 ]
 
-
 class RandomButton extends React.Component {
+
+  state = {
+    hasRandomPlaneteers: false
+  }
 
   handleClick = () => {
     const randomPlaneteer = arrayOfPlaneteers[Math.floor(Math.random() * arrayOfPlaneteers.length)]
 
-    const index = arrayOfPlaneteers.indexOf(randomPlaneteer)
+    if (randomPlaneteer) {
+      const index = arrayOfPlaneteers.indexOf(randomPlaneteer)
 
-    if (index > -1) {
-      arrayOfPlaneteers.splice(index, 1)
-      console.log(arrayOfPlaneteers)
+      if (index > -1) {
+        arrayOfPlaneteers.splice(index, 1)
+        console.log(arrayOfPlaneteers)
+      }
+
+      this.props.addNewPlaneteer(randomPlaneteer)
     }
 
-    this.props.addNewPlaneteer(randomPlaneteer)
-    
+    else {
+      this.setState({hasRandomPlaneteers: false})
+    }
   }
 
   render() {
     return (
       <div className="centered">
         <button onClick={this.handleClick} id="random-planeteer" >
-          Click to Add a Random Planeteer
+          {this.state.hasRandomPlaneteers ? "Click to Add a Random Planeteer" : "Awaiting More Recruits"}
         </button>
       </div>
     );
