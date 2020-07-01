@@ -10,7 +10,6 @@ class App extends React.Component {
 
   state={
     planeteers: [],
-    filteredPlaneteers: [],
     sortInput: ''
   }
 
@@ -29,23 +28,21 @@ class App extends React.Component {
     this.setState({
       sortInput: event.target.value
     });
-  
-     this.setState({
-      filteredPlaneteers: this.state.planeteers.filter(planeteer =>{
-        return planeteer.name.toLowerCase().includes(this.state.sortInput.toLowerCase())
-      })
-     })
   }
 
-  render(){
 
+
+  render(){
+    const filteredPlaneteers = this.state.planeteers.filter(planeteers => {
+      return planeteers.name.toLowerCase().includes(this.state.sortInput) ||
+      planeteers.bio.toLowerCase().includes(this.state.sortInput)})
 
     return (
       <div>
         <Header />
         <SearchBar filterFunction={this.filterFunction} sortInput={this.state.sortInput}/>
         <RandomButton/>
-        <PlaneteersContainer planeteers={this.state.filteredPlaneteers}/>
+        <PlaneteersContainer planeteers={filteredPlaneteers}/>
       </div>
     );
   }
