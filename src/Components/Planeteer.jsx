@@ -14,15 +14,24 @@ class Planeteer extends React.Component {
     })
   }
 
+  calculateAge = () => {
+    const currentYear = new Date().getFullYear()
+    const yearBorn = this.props.planeteer.born
+    const age = currentYear - yearBorn
+    return age
+  }
+
   render() {
     //deconstruct props.planeteer 
-    let {bio, born, fromUSA, name, pictureUrl, quote, twitter} = this.props.planeteer
+    let {bio, fromUSA, name, pictureUrl, quote, twitter} = this.props.planeteer
     return (
       <li className="cards__item">
         <div className="card">
           <img src={pictureUrl} alt={name} className="card__image" onClick={this.handleClick} />
           <div className="card__content">
             <div className="card__title">{name}</div>
+            {/* added age here  */}
+            <p>{this.calculateAge()}</p>
             <p className="card__text">{this.state.clicked ? quote : bio}</p>
             <div className="card__detail">
               <p>{twitter}</p>
